@@ -1,0 +1,16 @@
+name: build and upload image
+
+on:
+  pull_request:
+    types:
+      - labeled
+    branches:
+      - master  # Adjust this to the appropriate branch name
+
+jobs:
+  build_and_upload:
+    runs-on: ubuntu-latest  # Use the appropriate runner
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag go-ethereum:$(date +%s)
