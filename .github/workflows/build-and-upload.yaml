@@ -4,11 +4,15 @@ on:
   pull_request:
     types:
       - labeled
+      - closed
     branches:
       - master  # Adjust this to the appropriate branch name
 
 jobs:
   build_and_upload:
+    if: |
+      github.event.pull_request.merged == true &&  # Check if PR is merged
+      contains(github.event.pull_request.labels.*.name, 'CI:TriggerBuild')
     runs-on: ubuntu-latest  # Use the appropriate runner
     steps:
     - uses: actions/checkout@v3
