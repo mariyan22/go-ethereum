@@ -1,8 +1,4 @@
-Test PR
-Test With label
-## Go Ethereum
-
-NEW PR
+TEST PR
 
 Official Golang execution layer implementation of the Ethereum protocol.
 
